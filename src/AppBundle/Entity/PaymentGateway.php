@@ -44,6 +44,18 @@ class PaymentGateway
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="string")
+     * @var
+     */
+    private $defaultExchangeRate;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=4)
+     * @var
+     */
+    private $exchangeRateDifference;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -127,5 +139,37 @@ class PaymentGateway
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDefaultExchangeRate()
+    {
+        return $this->defaultExchangeRate;
+    }
+
+    /**
+     * @param mixed $defaultExchangeRate
+     */
+    public function setDefaultExchangeRate($defaultExchangeRate)
+    {
+        $this->defaultExchangeRate = $defaultExchangeRate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExchangeRateDifference()
+    {
+        return $this->exchangeRateDifference;
+    }
+
+    /**
+     * @param mixed $exchangeRateDifference
+     */
+    public function setExchangeRateDifference($exchangeRateDifference)
+    {
+        $this->exchangeRateDifference = $exchangeRateDifference;
     }
 }
