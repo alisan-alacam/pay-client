@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Gateway;
+namespace AppBundle\Gateway\Payment;
 
 interface PaymentInterface
 {
