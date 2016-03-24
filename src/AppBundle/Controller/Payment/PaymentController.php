@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Payment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Form\Payment\PaymentType;
 
 class PaymentController extends Controller
 {
@@ -15,6 +16,10 @@ class PaymentController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('payment/index.html.twig');
+        $form = $this->createForm(new PaymentType($this->getDoctrine()->getManager()));
+
+        return $this->render('payment/index.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 }
