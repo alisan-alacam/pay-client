@@ -6,29 +6,10 @@
 </head>
 <body>
 <h1>Payment Page</h1>
-<form action="" method="post">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Name: </label>
-        <input type="text" name="name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Payment Gateway: </label>
-        <select name="gateway" class="form-control">
-            <option value="payu">Payu</option>
-            <option value="paypal">Paypal</option>
-            <option value="paytrek">Paytrek</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Value: </label>
-        <input type="text" name="value">
-        <select name="curreny" id="">
-            <option value="eur">EUR</option>
-            <option value="usd">USD</option>
-            <option value="try">TRY</option>
-        </select>
-        <button type="submit" name="pay">Pay</button>
-    </div>
-</form>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
 </body>
 </html>
