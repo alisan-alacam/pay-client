@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PaymentGatewayRepository")
  * @ORM\Table("payment_gateways")
  * Class PaymentGateway
  * @package AppBundle\Entity
