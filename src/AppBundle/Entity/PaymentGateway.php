@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PaymentGatewayRepository")
  * @ORM\Table(name="payment_gateways",
  *     indexes={
- *          @ORM\Index(name="slug", columns={"slug"}),
  *          @ORM\Index(name="createdAt", columns={"created_at"})
  *     }
  * )
@@ -33,7 +32,7 @@ class PaymentGateway
 
     /**
      * @var
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", unique=true)
      */
     private $slug;
 

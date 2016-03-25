@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmailTemplateRepository")
  * @ORM\Table(name="email_templates",
  *     indexes={
- *          @ORM\Index(name="slug", columns={"slug"}),
  *          @ORM\Index(name="createdAt", columns={"created_at"})
  *     }
  * )
@@ -32,7 +31,7 @@ class EmailTemplate
     private $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", unique=true)
      * @var
      */
     private $slug;
