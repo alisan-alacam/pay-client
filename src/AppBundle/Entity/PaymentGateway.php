@@ -6,7 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PaymentGatewayRepository")
- * @ORM\Table("payment_gateways")
+ * @ORM\Table(name="payment_gateways",
+ *     indexes={
+ *          @ORM\Index(name="slug", columns={"slug"}),
+ *          @ORM\Index(name="createdAt", columns={"created_at"})
+ *     }
+ * )
  * Class PaymentGateway
  * @package AppBundle\Entity
  */
