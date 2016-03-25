@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+</head>
+<body>
+<h1>Payment Page</h1>
+
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            <b>{{ flash_message }}</b>
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+</body>
+</html>
