@@ -12,12 +12,19 @@ class Payment implements PaymentInterface
     private $em;
 
     /**
+     * @var \Swift_Mailer
+     */
+    private $mailer;
+
+    /**
      * Payment constructor.
      * @param EntityManager $entityManager
+     * @param \Swift_Mailer $mailer
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, \Swift_Mailer $mailer)
     {
         $this->em = $entityManager;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -125,7 +132,27 @@ class Payment implements PaymentInterface
      */
     public function sendVoucher()
     {
-        // TODO: Implement sendVoucher() method.
+        $emailTemplate = $this->em
+            ->getRepository('AppBundle:EmailTemplate')
+            ->getEmailTemplateBySlug('payment_success_accounting');
+
+
+        $dataMap = array(
+            '[NAME]' => $this->getName(),
+            '[VALUE]' => $this->getValue(),
+            '[CURRENCY]' => $this->getCurrency(),
+            '[CURRENT_DATE_TIME]' => (new \DateTime())->format('d.m.Y H:i:s')
+        );
+
+        $emailBody = str_replace(array_keys($dataMap), array_values($dataMap), $emailTemplate['content']);
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($emailTemplate['subject'])
+            ->setFrom('help@testtest.com')
+            ->setTo('accounting@testtest.com')
+            ->setBody($emailBody, 'text/html')
+        ;
+        $this->mailer->send($message);
     }
 
     /**

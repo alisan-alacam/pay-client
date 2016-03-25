@@ -41,7 +41,9 @@ class PaymentController extends Controller
 
             $gatewayService = $this->get('payment_gateway.factory');
 
-            $gateway = $gatewayService::create($gatewaySlug, $this->getDoctrine()->getManager());
+            $mailer = $this->get('mailer');
+
+            $gateway = $gatewayService::create($gatewaySlug, $this->getDoctrine()->getManager(), $mailer);
 
             $gateway->setGatewaySlug($gatewaySlug);
             $gateway->setValue($form->get('value')->getData());

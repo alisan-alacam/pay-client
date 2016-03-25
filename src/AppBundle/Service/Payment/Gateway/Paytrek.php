@@ -12,14 +12,16 @@ class Paytrek extends Payment
      * @var EntityManager
      */
     private $em;
+
     /**
      * Paypal constructor.
      * @param EntityManager $entityManager
+     * @param \Swift_Mailer $mailer
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, \Swift_Mailer $mailer)
     {
         $this->em = $entityManager;
-        parent::__construct($entityManager);
+        parent::__construct($entityManager, $mailer);
     }
 
     /**
