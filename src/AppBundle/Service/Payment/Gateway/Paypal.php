@@ -4,6 +4,7 @@ namespace AppBundle\Service\Payment\Gateway;
 
 use Doctrine\ORM\EntityManager;
 use AppBundle\Service\Payment\Payment;
+use AppBundle\Service\Payment\PaymentResponse;
 
 class Paypal extends Payment
 {
