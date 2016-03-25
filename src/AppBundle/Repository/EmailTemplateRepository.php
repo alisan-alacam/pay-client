@@ -14,7 +14,7 @@ class EmailTemplateRepository extends EntityRepository
     /**
      * Takma isime göre email şablonundaki konu ve içeriği döndürür
      *
-     * @param $emailTemplateSlug
+     * @param string $emailTemplateSlug
      * @return mixed|null
      */
     public function getEmailTemplateBySlug($emailTemplateSlug)
