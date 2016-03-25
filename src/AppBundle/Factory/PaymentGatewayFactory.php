@@ -8,19 +8,19 @@ use AppBundle\Service\Payment\Gateway\Payu;
 
 class PaymentGatewayFactory
 {
-    public static function create($paymentGatewaySlug, $em)
+    public static function create($paymentGatewaySlug, $em, \Swift_Mailer $mailer)
     {
         switch ($paymentGatewaySlug) {
             case 'paypal':
-                $paymentGateway = new Paypal($em);
+                $paymentGateway = new Paypal($em, $mailer);
                 break;
 
             case 'payu':
-                $paymentGateway = new Payu($em);
+                $paymentGateway = new Payu($em, $mailer);
                 break;
 
             case 'paytrek':
-                $paymentGateway = new Paytrek($em);
+                $paymentGateway = new Paytrek($em, $mailer);
                 break;
 
             default:
